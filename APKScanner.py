@@ -1,9 +1,4 @@
 #!/usr/bin/python
-"""
-Author: Seth Johnson
-Date: Jun 27, 2023
-"""
-
 import os
 import csv
 import time
@@ -13,7 +8,6 @@ import concurrent.futures
 from subprocess import run
 from pprint import pprint
 from androguard import misc
-import traceback
 
 """
 ### Variable Declaration
@@ -126,11 +120,11 @@ def apkAnalyzer(apk): # Calls Androguard's misc.AnalyzeAPK() and updates declare
                 }
         print(f"### CONSOLE: Completed analysis.")
     except Exception as ex:
-        print(traceback.format_exc())
         print(f"### CONSOLE: Error while analyzing {apk}. Aborting attempt.")
-        # # Seeing how many cause us problems and why
-        # with open(os.path.join("2023_REU_Workspace", "AnalysisFailures.txt"),"a+") as outFile:
-        #     outFile.write(f"{apk} failed with error: {ex}\n")
+        # Seeing how many cause us problems and why
+        with open(os.path.join(os.getcwd(), "AnalysisFailures.txt"),"a+") as outFile:
+            outFile.write(f"{apk} failed with error: {ex}\n")
+
 """
 ### INIT MAIN
 """
@@ -150,9 +144,9 @@ if __name__ == '__main__':
             for file in os.listdir(os.path.join(dirPath, item)):
                 files.append(os.path.join(dirPath, item, file))
 
-    # with open(os.path.join("2023_REU_Workspace", "APKsFound.txt"), "w") as outFile:
-    #     for file in files:
-    #         outFile.write(file+"\n")
+    with open(os.path.join(os.getcwd(),"APKsFound.txt"), "w") as outFile:
+        for file in files:
+            outFile.write(file+"\n")
 
     """
     ### APK Analysis
@@ -160,16 +154,14 @@ if __name__ == '__main__':
     t0 = time.time() # Start timer
 
     ### DEBUG: Single file analysis
-    # apkAnalyzer(files[0])
-    # apkAnalyzer("2023_REU_Workspace/covid_19_Dataset/covid19apps_0526_6/e7d62b7443ad21d5ab9f9cc61adebe110e116b72c5bda90b74dd80a0c9e354d8.apk")
+    # apkAnalyzer("2023_REU_Workspace/covid_19_Dataset/covid19apps_0526_0/40d02cdcf32b40eac293058b46c24c35b8702f7b6f91e1176bdda0ede93c29cc.apk")
     
     # iterative execution
     # for file in files:
     #     apkAnalyzer(file)
-
     # Multithreaded execution
-    # with concurrent.futures.ThreadPoolExecutor() as executor: # No restrictions with how much threads this program can run
-    #     executor.map(apkAnalyzer, files) # Analyzing entirety of files array
+    with concurrent.futures.ThreadPoolExecutor() as executor: # No restrictions with how much threads this program can run
+        executor.map(apkAnalyzer, files) # Analyzing entirety of files array
 
     print(f"Analysis Duration: {(time.time()-t0):.2f} second(s)") # Time the performace of my program
 
@@ -177,93 +169,8 @@ if __name__ == '__main__':
     ### Updating keys array
         - to include all permissions found during our APK analysis
     """
-
     # ### DEBUG: Pre-structured Apps dictionary
-    apps = {'Covid 19': {
-        '30fce6b41858aadce710ef2ad5f9b3afbd47c32bee70469b112cfa14f60085e9.apk': {
-            'avRank': 0,
-            'cloned': 0,
-            'clones': [],
-                    'permissions': ['android.permission.INTERNET'],
-                    'pkg name': 'com.urufu.covid19app'
-            },
-            '493e52c126be18efa077932250d82f764ab2da59d83b5f56d53fe95c1d6ba3bc.apk': {
-                'avRank': 4,
-                    'cloned': 0,
-                    'clones': [],
-                    'permissions': [
-                'android.permission.SET_WALLPAPER',
-                    'android.permission.KILL_BACKGROUND_PROCESSES',
-                    'com.anddoes.launcher.permission.UPDATE_COUNT',
-                    'android.permission.INTERNET',
-                    'android.permission.BROADCAST_PACKAGE_REPLACED',
-                'com.oppo.launcher.permission.WRITE_SETTINGS',
-                    'android.permission.CALL_PHONE',
-                    'android.permission.PROCESS_OUTGOING_CALLS',
-                    'android.permission.WAKE_LOCK',
-                    'android.permission.READ_EXTERNAL_STORAGE',
-                'com.huawei.android.launcher.permission.WRITE_SETTINGS',
-                    'android.permission.RECEIVE_SMS',
-                    'android.permission.SET_WALLPAPER_HINTS',
-                    'com.sonyericsson.home.permission.BROADCAST_BADGE',
-                'com.sonymobile.home.permission.PROVIDER_INSERT_BADGE',
-                    'com.huawei.android.launcher.permission.CHANGE_BADGE',
-                    'com.sec.android.provider.badge.permission.WRITE',
-                'com.android.browser.permission.READ_HISTORY_BOOKMARKS',
-                    'com.oppo.launcher.permission.READ_SETTINGS',
-                'android.permission.READ_PHONE_STATE',
-                    'android.permission.ACCESS_COARSE_LOCATION',
-                    'android.permission.CAMERA',
-                    'android.permission.CHANGE_WIFI_STATE',
-                    'android.permission.READ_CONTACTS',
-                    'android.permission.WRITE_CONTACTS',
-                    'android.permission.READ_CALL_LOG',
-                    'android.permission.WRITE_CALL_LOG',
-                    'android.permission.FLASHLIGHT',
-                    'android.permission.SYSTEM_ALERT_WINDOW',
-                    'android.permission.WRITE_EXTERNAL_STORAGE',
-                    'me.everything.badger.permission.BADGE_COUNT_WRITE',
-                    'android.permission.RECORD_AUDIO',
-                    'android.permission.BROADCAST_PACKAGE_ADDED',
-                'android.permission.BROADCAST_PACKAGE_CHANGED',
-                    'android.permission.READ_SMS',
-                    'com.htc.launcher.permission.READ_SETTINGS',
-                    'android.permission.VIBRATE',
-                    'android.permission.RECEIVE_BOOT_COMPLETED',
-                    'com.sec.android.provider.badge.permission.READ',
-                'me.everything.badger.permission.BADGE_COUNT_READ',
-                'android.permission.BROADCAST_PACKAGE_INSTALL',
-                'android.permission.READ_APP_BADGE',
-                'android.permission.BLUETOOTH',
-                'android.permission.ACCESS_NETWORK_STATE',
-                'android.permission.ACCESS_WIFI_STATE',
-                'android.permission.ACCESS_FINE_LOCATION',
-                'com.htc.launcher.permission.UPDATE_SHORTCUT',
-                'com.huawei.android.launcher.permission.READ_SETTINGS',
-                'android.permission.GET_TASKS',
-                'android.permission.GET_ACCOUNTS',
-                'com.majeur.launcher.permission.UPDATE_BADGE'
-            ],
-            'pkg name': 'cmf0.c3b5bm90zq.patch'
-        },
-        '86e93e44371566b39402b2e455f59b06ce0628d63c9f7a9b0bf7a5ebe8821b2b.apk': {
-            'avRank': 0,
-                    'cloned': 0,
-            'clones': [],
-            'permissions': ['android.permission.INTERNET'],
-            'pkg name': 'com.urufu.covid19app'
-        },
-        'c21da66789e5b45a69a2373a3569478eaaf3e8ed036329324fd5e4be939ac2a6.apk': {
-            'avRank': 0,
-            'cloned': 0,
-            'clones': [],
-            'permissions': [
-                'android.permission.ACCESS_NETWORK_STATE',
-                'android.permission.INTERNET'
-            ],
-            'pkg name': 'com.app.covid19'
-        }
-    }}
+    # apps = {}
 
     # pprint(apps)
 
@@ -282,62 +189,35 @@ if __name__ == '__main__':
     """
     ### Writing to CSV
     """
+    with open(os.path.join(os.getcwd(), "COVID19_APK_Data_06-2023.csv"), 'w') as outFile:
+        writer = csv.writer(outFile)
+        writer.writerow(keys)
+        for app in apps:
+            for apk, values in apps[app].items():
+                line = [] # THIS FUCK WAS IN THE OUTER LOOP AND DUPLICATED MY CSV LINES
+                # print(f"Application Name: {app}")
+                line.append(app)
+                # print("Package Name: ", values["pkg name"])
+                line.append(values["pkg name"])
+                # print(f"APK File: {key}")
+                line.append(apk)
+                # print("AV Rank: ", values["avRank"])
+                line.append(values["avRank"])
+                # print(f"{apk} has been cloned.") if values["cloned"] > 0 else print("", end="")
+                line.append(values["cloned"])
+                # print(f"Apps sharing {apk}: ", values["clones"])
+                line.append(values["clones"])
+                # print("Total permssion requests: ", len(values["permissions"]))
+                line.append(len(values["permissions"]))
+                # print("Permissions spread: ", values["permissions"])
+                for i in keys[7:]:
+                    line.append(1) if i in values["permissions"] else line.append(0)
 
-    for app in apps:
-        for apk, values in apps[app].items():
-            line = [] # THIS FUCK WAS IN THE OUTER LOOP AND DUPLICATED MY CSV LINES
-            # print(f"Application Name: {app}")
-            line.append(app)
-            # print("Package Name: ", values["pkg name"])
-            line.append(values["pkg name"])
-            # print(f"APK File: {key}")
-            line.append(apk)
-            # print("AV Rank: ", values["avRank"])
-            line.append(values["avRank"])
-            # print(f"{apk} has been cloned.") if values["cloned"] > 0 else print("", end="")
-            line.append(values["cloned"])
-            # print(f"Apps sharing {apk}: ", values["clones"])
-            line.append(values["clones"])
-            # print("Total permssion requests: ", len(values["permissions"]))
-            line.append(len(values["permissions"]))
-            # print("Permissions spread: ", values["permissions"])
-            for i in keys[7:]:
-                line.append(1) if i in values["permissions"] else line.append(0)
-
-            # Will not include the Malware (y/n) col, since I feel the AV Rank satisfies that metric
-            # print(f"\n###{key} is malware!!###\n") if values["avRank"] > 0 else print("APK is benign.")
-            
-            print(line)
-
-    # with open(os.path.join(os.getcwd(), "2023_REU_Workspace/resultsPt2.csv"), 'w') as outFile:
-    #     writer = csv.writer(outFile)
-    #     writer.writerow(keys)
-    #     for app in apps:
-    #         for apk, values in apps[app].items():
-    #             line = [] # THIS FUCK WAS IN THE OUTER LOOP AND DUPLICATED MY CSV LINES
-    #             # print(f"Application Name: {app}")
-    #             line.append(app)
-    #             # print("Package Name: ", values["pkg name"])
-    #             line.append(values["pkg name"])
-    #             # print(f"APK File: {key}")
-    #             line.append(apk)
-    #             # print("AV Rank: ", values["avRank"])
-    #             line.append(values["avRank"])
-    #             # print(f"{apk} has been cloned.") if values["cloned"] > 0 else print("", end="")
-    #             line.append(values["cloned"])
-    #             # print(f"Apps sharing {apk}: ", values["clones"])
-    #             line.append(values["clones"])
-    #             # print("Total permssion requests: ", len(values["permissions"]))
-    #             line.append(len(values["permissions"]))
-    #             # print("Permissions spread: ", values["permissions"])
-    #             for i in keys[7:]:
-    #                 line.append(1) if i in values["permissions"] else line.append(0)
-
-    #             # Will not include the Malware (y/n) col, since I feel the AV Rank satisfies that metric
-    #             # print(f"\n###{key} is malware!!###\n") if values["avRank"] > 0 else print("APK is benign.")
+                # Will not include the Malware (y/n) col, since I feel the AV Rank satisfies that metric
+                # print(f"\n###{key} is malware!!###\n") if values["avRank"] > 0 else print("APK is benign.")
                 
-    #             print(line)
-    #             # writer.writerow(line)
+                # print(line)
+                writer.writerow(line)
     
     # print("Current datastructure Format:")
     # pprint(dummy)
@@ -345,7 +225,10 @@ if __name__ == '__main__':
     """
     ### Problems and errors
     - My spreadsheet's all screwed up, I coded it wrong :(
-        -   I KNOW WHY: THE ARRAY DECLARATION WAS IN ONE LOOP TO HIGH
+        -   I KNOW WHY: THE ARRAY DECLARATION WAS IN ONE LOOP TO HIGH:
+    - Androguard analyzeAPK() throws error on 40d02cdcf32b40eac293058b46c24c35b8702f7b6f91e1176bdda0ede93c29cc.apk in covid_19_526_0 
+        - "Exception has occurred: BadZipFile File is not a zip file" --> Show results.txt to verify apk isn't corrupted
+        - idfk why I'm getting that error
     """
 
     """
