@@ -1,0 +1,204 @@
+############################### CONTROL GROUP ###############################
+### Classical Naive-Bayes
+Accuracy: 85.71%
+Classification Report: 
+              precision    recall  f1-score   support
+
+         0.0       0.86      1.00      0.92       168
+         1.0       0.00      0.00      0.00        28
+
+    accuracy                           0.86       196
+   macro avg       0.43      0.50      0.46       196
+weighted avg       0.73      0.86      0.79       196
+
+
+### Support Vector Machines
+Accuracy: 90.82%
+Classification Report: 
+              precision    recall  f1-score   support
+
+         0.0       0.90      1.00      0.95       168
+         1.0       1.00      0.36      0.53        28
+
+    accuracy                           0.91       196
+   macro avg       0.95      0.68      0.74       196
+weighted avg       0.92      0.91      0.89       196
+
+
+### Decision Trees
+Accuracy: 93.37%
+Classification Report: 
+              precision    recall  f1-score   support
+
+         0.0       0.93      1.00      0.96       168
+         1.0       1.00      0.54      0.70        28
+
+    accuracy                           0.93       196
+   macro avg       0.96      0.77      0.83       196
+weighted avg       0.94      0.93      0.92       196
+
+
+### Connected Neural Network
+Accuracy: 92.86%
+Classification Report: 
+              precision    recall  f1-score   support
+
+           0       0.92      1.00      0.96       168
+           1       1.00      0.50      0.67        28
+
+    accuracy                           0.93       196
+   macro avg       0.96      0.75      0.81       196
+weighted avg       0.93      0.93      0.92       196
+
+
+############################### TRAIN/TEST SPLIT WITH SMOTE ###############################
+### Classical Naive-Bayes
+Accuracy: 72.78%
+Classification Report: 
+              precision    recall  f1-score   support
+
+         0.0       0.67      0.95      0.79       177
+         1.0       0.91      0.48      0.63       161
+
+    accuracy                           0.73       338
+   macro avg       0.79      0.72      0.71       338
+weighted avg       0.78      0.73      0.71       338
+
+
+### Support Vector Machines
+Accuracy: 78.11%
+Classification Report: 
+              precision    recall  f1-score   support
+
+         0.0       0.72      0.97      0.82       177
+         1.0       0.94      0.58      0.72       161
+
+    accuracy                           0.78       338
+   macro avg       0.83      0.77      0.77       338
+weighted avg       0.82      0.78      0.77       338
+
+
+### Decision Trees
+Accuracy: 92.90%
+Classification Report: 
+              precision    recall  f1-score   support
+
+         0.0       0.92      0.94      0.93       177
+         1.0       0.94      0.91      0.92       161
+
+    accuracy                           0.93       338
+   macro avg       0.93      0.93      0.93       338
+weighted avg       0.93      0.93      0.93       338
+
+
+### Connected Neural Network
+Accuracy: 91.42%
+Classification Report: 
+              precision    recall  f1-score   support
+
+           0       0.94      0.89      0.92       177
+           1       0.89      0.94      0.91       161
+
+    accuracy                           0.91       338
+   macro avg       0.91      0.92      0.91       338
+weighted avg       0.92      0.91      0.91       338
+
+
+############################### CROSS-VALIDATION GROUP ###############################
+### Classical Naive-Bayes
+Accuracy: 85.43%
+Classification Report: 
+              precision    recall  f1-score   support
+
+           0       0.85      1.00      0.92      3349
+           1       0.00      0.00      0.00       571
+
+    accuracy                           0.85      3920
+   macro avg       0.43      0.50      0.46      3920
+weighted avg       0.73      0.85      0.79      3920
+
+
+### Support Vector MachineS
+Accuracy: 91.86%
+Classification Report: 
+              precision    recall  f1-score   support
+
+           0       0.91      1.00      0.95      3349
+           1       1.00      0.44      0.61       571
+
+    accuracy                           0.92      3920
+   macro avg       0.95      0.72      0.78      3920
+weighted avg       0.93      0.92      0.90      3920
+
+
+### Decision Trees
+Accuracy: 93.24%
+Classification Report: 
+              precision    recall  f1-score   support
+
+           0       0.94      0.98      0.96      3349
+           1       0.88      0.63      0.73       571
+
+    accuracy                           0.93      3920
+   macro avg       0.91      0.80      0.85      3920
+weighted avg       0.93      0.93      0.93      3920
+
+
+###### Connected Neural Network ######
+Accuracy: 93.98%
+Classification Report: 
+              precision    recall  f1-score   support
+
+           0       0.95      0.99      0.97        84
+           1       0.90      0.64      0.74        13
+
+    accuracy                           0.94        97
+############################### CROSS-VALIDATION WITH SMOTE ###############################
+### Classical Naive-Bayes
+Accuracy: 72.23%
+Classification Report: 
+              precision    recall  f1-score   support
+
+           0       0.65      0.96      0.78      3392
+           1       0.92      0.49      0.64      3368
+
+    accuracy                           0.72      6760
+   macro avg       0.79      0.72      0.71      6760
+weighted avg       0.78      0.72      0.71      6760
+
+
+### Support Vector Machines
+Accuracy: 76.80%
+Classification Report: 
+              precision    recall  f1-score   support
+
+           0       0.69      0.98      0.81      3392
+           1       0.96      0.56      0.70      3368
+
+    accuracy                           0.77      6760
+   macro avg       0.83      0.77      0.76      6760
+weighted avg       0.83      0.77      0.76      6760
+
+
+### Decision Trees
+Accuracy: 92.77%
+Classification Report: 
+              precision    recall  f1-score   support
+
+           0       0.93      0.93      0.93      3392
+           1       0.93      0.93      0.93      3368
+
+    accuracy                           0.93      6760
+   macro avg       0.93      0.93      0.93      6760
+weighted avg       0.93      0.93      0.93      6760
+
+
+###### Connected Neural Network ######
+Accuracy: 93.57%
+Classification Report: 
+              precision    recall  f1-score   support
+
+           0       0.94      0.99      0.96        84
+           1       0.87      0.62      0.72        13
+
+    accuracy                           0.94        97

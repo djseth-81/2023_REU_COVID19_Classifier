@@ -1,0 +1,12 @@
+2023_REU_Workspace/covid_19_Dataset/covid19apps_0526_1/.DS_Store failed with error: File is not a zip file
+2023_REU_Workspace/covid_19_Dataset/covid19apps_0526_1/75106b8fc4e996308388c38865e1f9ae22b76929f68d244ae05567786fd22001.apk failed with error: File is not a zip file
+2023_REU_Workspace/covid_19_Dataset/covid19apps_0526_2/d37e56582fddd351212ec90fc3bd96757ecaf2507c3b6346eb7692791a613616.apk failed with error: 'DalvikVMFormat' object has no attribute 'classes'
+2023_REU_Workspace/covid_19_Dataset/covid19apps_0526_3/833a099f3d2ef3bff0813efbdbfc56dc8d1d11caac1a96e3fdc03ddc8908e186.apk failed with error: File is not a zip file
+2023_REU_Workspace/covid_19_Dataset/covid19apps_0526_3/872314dc880ce1f759e8d1f6c34ca03f5bbb31d598a808381d9c34d20c789538.apk failed with error: File is not a zip file
+2023_REU_Workspace/covid_19_Dataset/covid19apps_0526_6/32229d21c140d4af82597516348e26b93baeb1bdb9bcffe36079c03fe1b7fc29.apk failed with error: File is not a zip file
+2023_REU_Workspace/covid_19_Dataset/covid19apps_0526_6/e7d62b7443ad21d5ab9f9cc61adebe110e116b72c5bda90b74dd80a0c9e354d8.apk failed with error: 7
+2023_REU_Workspace/covid_19_Dataset/covid19apps_0526_7/632bd47e121593f0f8b297ee21e95e2dd8d808750742978bb94d9483b15bbf0f.apk failed with error: File is not a zip file
+2023_REU_Workspace/covid_19_Dataset/covid19apps_0526_8/b5b9f28f06dcdf86c8eb92df6ca1b8c2f0bb23c68ba91e7e6875ae98e6e85bc8.apk failed with error: File is not a zip file
+2023_REU_Workspace/covid_19_Dataset/covid19apps_0526_9/74066ceaca5e57d58121bf005c1ca064f41c3987c9ce78ac677e3053c3baa3e3.apk failed with error: 'DalvikVMFormat' object has no attribute 'classes'
+2023_REU_Workspace/covid_19_Dataset/covid19apps_0526_0/40d02cdcf32b40eac293058b46c24c35b8702f7b6f91e1176bdda0ede93c29cc.apk failed with error: File is not a zip file
+2023_REU_Workspace/covid_19_Dataset/covid19apps_0526_0/51b4aa2620010d6d78eeae38c1d548aea565e18306a5bb436d73a1c29bf9b439.apk failed with error: File is not a zip file
