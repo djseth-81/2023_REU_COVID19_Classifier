@@ -140,6 +140,10 @@ def dnnKFold(features, lables, imbalanced=False):
 
         xTrain = np.asarray(xTrain).astype('float64')
         xTest = np.asarray(xTest).astype('float64')
+
+        xTrain = xTrain / xTrain.max()
+        xTest = xTest / xTest.max()
+        
         yTrain = np.asarray(yTrain).astype('float64')
         yTest = np.asarray(yTest).astype('float64')
         
@@ -288,6 +292,10 @@ xTrain, xTest, yTrain, yTest = train_test_split(perms, labels, random_state=RAND
 # Converting to NumPy float32. Tensorflow hates int64
 xTrain = np.asarray(xTrain).astype('float32')
 xTest = np.asarray(xTest).astype('float32')
+
+xTrain = xTrain / xTrain.max()
+xTest = xTest / xTest.max()
+
 yTrain = np.asarray(yTrain).astype('float32')
 yTest = np.asarray(yTest).astype('float32')
 
@@ -363,6 +371,10 @@ xTrain, xTest, yTrain, yTest = train_test_split(permsSMOTE, labelsSMOTE, random_
 # Converting to NumPy float32. Tensorflow hates int64
 xTrain = np.asarray(xTrain).astype('float32')
 xTest = np.asarray(xTest).astype('float32')
+
+xTrain = xTrain / xTrain.max()
+xTest = xTest / xTest.max()
+
 yTrain = np.asarray(yTrain).astype('float32')
 yTest = np.asarray(yTest).astype('float32')
 
