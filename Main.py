@@ -64,6 +64,7 @@ t0 = 0 # float value for recording a model's performance duration
 - Modify this value if we wanna change how many iterations our models go through
     - this will change the size of masterTrain and masterTest arrays, hence changing how many times each model iterates through these folds
 """
+NUM_CATS = 2 # The quantity of categories we are going to organize our APK files into. 0 for benign, 1 for malware: S({0, 1}) = 2
 FOLDS = 20
 RANDOM_STATE = 0
 TEST_SIZE = 0.1
