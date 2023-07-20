@@ -1,5 +1,5 @@
 # 2023_REU_COVID19_Classifier
-Repository for the work done on "Comparing Classifiers" for the 2023 REU Summer Session (#2308741)
+Repository for the work done on "Comparing Classifiers" for the 2023 REU Summer Session
 
 # Project Overview
 This repository contains Python scripts for processing APK data to train and test 4 different machine learning models:
@@ -15,3 +15,5 @@ Those are then re-ran with a re-processed dataset using the Synthetic Minority O
 
 This repository containts results files of the performance of the 4 classifiers under the various training schemes
 Graphs are also included to visualize some characteristics about the collection of APK files we processed for our research.
+
+This research is supported by the National Science Foundation under grant award #2308741
