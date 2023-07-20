@@ -223,7 +223,7 @@ ssplit = ShuffleSplit(n_splits=FOLDS, test_size=TEST_SIZE, random_state=RANDOM_S
 """
 print("### CONSOLE: prepping SMOTE...")
 
-smote = SMOTE(random_state=RANDOM_STATE,sampling_strategy="not majority")
+smote = SMOTE(random_state=RANDOM_STATE,sampling_strategy={1: 270})
 permsSMOTE, labelsSMOTE = smote.fit_resample(perms, labels)
 
 """
@@ -235,7 +235,7 @@ else:
     print("No GPU found that can run TF.\n")
 
 """
-### Overridden callback class "timer" for catching epoch/total time
+### Custom callback class "timer" for catching epoch/total time
 """
 class timer(keras.callbacks.Callback):
     import time
