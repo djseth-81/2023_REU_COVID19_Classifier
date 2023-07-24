@@ -152,9 +152,6 @@ if __name__ == '__main__':
     ### APK Analysis
     """
     t0 = time.time() # Start timer
-
-    ### DEBUG: Single file analysis
-    # apkAnalyzer("2023_REU_Workspace/covid_19_Dataset/covid19apps_0526_0/40d02cdcf32b40eac293058b46c24c35b8702f7b6f91e1176bdda0ede93c29cc.apk")
     
     # iterative execution
     # for file in files:
@@ -169,10 +166,6 @@ if __name__ == '__main__':
     ### Updating keys array
         - to include all permissions found during our APK analysis
     """
-    # ### DEBUG: Pre-structured Apps dictionary
-    # apps = {}
-
-    # pprint(apps)
 
     # Aggregating all requested permissions
     for app in apps:
@@ -181,10 +174,8 @@ if __name__ == '__main__':
                 permSpread.append(i) if i not in permSpread else print("",end="")
 
             
-    # print(permSpread)
     permSpread.sort()
     keys += permSpread
-    # print(keys[7:])
     
     """
     ### Writing to CSV
@@ -194,7 +185,7 @@ if __name__ == '__main__':
         writer.writerow(keys)
         for app in apps:
             for apk, values in apps[app].items():
-                line = [] # THIS FUCK WAS IN THE OUTER LOOP AND DUPLICATED MY CSV LINES
+                line = []
                 # print(f"Application Name: {app}")
                 line.append(app)
                 # print("Package Name: ", values["pkg name"])
@@ -212,47 +203,6 @@ if __name__ == '__main__':
                 # print("Permissions spread: ", values["permissions"])
                 for i in keys[7:]:
                     line.append(1) if i in values["permissions"] else line.append(0)
-
-                # Will not include the Malware (y/n) col, since I feel the AV Rank satisfies that metric
-                # print(f"\n###{key} is malware!!###\n") if values["avRank"] > 0 else print("APK is benign.")
                 
                 # print(line)
                 writer.writerow(line)
-    
-    # print("Current datastructure Format:")
-    # pprint(dummy)
-
-    """
-    ### Problems and errors
-    - My spreadsheet's all screwed up, I coded it wrong :(
-        -   I KNOW WHY: THE ARRAY DECLARATION WAS IN ONE LOOP TO HIGH:
-    - Androguard analyzeAPK() throws error on 40d02cdcf32b40eac293058b46c24c35b8702f7b6f91e1176bdda0ede93c29cc.apk in covid_19_526_0 
-        - "Exception has occurred: BadZipFile File is not a zip file" --> Show results.txt to verify apk isn't corrupted
-        - idfk why I'm getting that error
-    """
-
-    """
-    ### Notes on what to do
-    - Machine Learning part --> 90% accuracy
-        - compare N-B, SVM, DTrees
-        - metrics comparison: f1, percision, accuracy, recall, time, etc.
-        - K-Fold Cross-Validation to partition and work through our full dataset
-        
-    - NN part --> Shoot for 98% accuracy
-        - passing to DNN
-        - converting to image map for C/ANN
-        
-    - For the best model
-        - Fine tune it!!!
-        
-    - Step 3
-        - SMOTE to assist balancing dataset
-            - 5 with SMOTE applied, 5 without SMOTE applied
-        - Comparing to prepared xlsx given
-        
-    - replicate bar graph from COVIDMalware.pdf representing how many apps use a specific permission
-
-    - graph how many apps use a quantity of permissions
-        - sum all 1 values in permissions in csv 
-    """
-    # This comment is playing with updating the code on GitHub
