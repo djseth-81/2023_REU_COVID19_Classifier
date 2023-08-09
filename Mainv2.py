@@ -35,6 +35,7 @@ from keras.models import Sequential
 # Custom modules 
 from CSVHandler import *
 from DatasetStatistics import *
+from FinalResults import *
 
 """
 ########################################## Variable declaration #########################################
@@ -223,7 +224,7 @@ ssplit = ShuffleSplit(n_splits=FOLDS, test_size=TEST_SIZE, random_state=RANDOM_S
 """
 print("### CONSOLE: prepping SMOTE...")
 
-smote = SMOTE(random_state=RANDOM_STATE,sampling_strategy={1: 270})
+smote = SMOTE(random_state=RANDOM_STATE,sampling_strategy={1: 1959 - 270})
 permsSMOTE, labelsSMOTE = smote.fit_resample(perms, labels)
 
 """
@@ -235,7 +236,7 @@ else:
     print("No GPU found that can run TF.\n")
 
 """
-### Custom callback class "timer" for catching epoch/total time
+### Overridden callback class "timer" for catching epoch/total time
 """
 class timer(keras.callbacks.Callback):
     import time
@@ -508,3 +509,9 @@ print("### CONSOLE: Executing Deep Neural Network...")
 dnnKFold(perms, labels, imbalanced=True)
 
 print("\n### CONSOLE: CV with SMOTE complete.\n")
+
+"""
+########################################## PLOTTING OUR RESULTS ##########################################
+"""
+readClassificationReport(OUTPUT_FILE)
+plotClassificationReport()
